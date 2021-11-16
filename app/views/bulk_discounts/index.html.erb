@@ -12,12 +12,14 @@
 
 <body>
   <div class="row">
-    <p class='col-12'>My Invoice</p>
+    <p class='mr-auto col-12'>All Discounts</p>
   </div>
-
-<ul class='mr-auto col-10'>
-  <% @invoices.each do |invoice| %>
-    <li><%= link_to "Invoice ##{invoice.id}", merchant_invoice_path(@merchant, invoice) %></li>
-  <% end %>
-  </ul>
+  <div class='mr-auto col-10'>
+    <% @merchant.bulk_discounts.each do |discount| %>
+      <ul><%= link_to "Discount No #{discount.id}", merchant_bulk_discount_path(@merchant, discount) %>
+        <li>Percentage discount: <%= discount.percentage_discount %></li>
+        <li>Quantity threshold: <%= discount.quantity_threshold %></li>
+      </ul>
+    <% end %>
+  </div>
 </body>
