@@ -17,8 +17,8 @@
   <div class='mr-auto col-10'>
     <% @merchant.bulk_discounts.each do |discount| %>
       <ul><%= link_to "Discount No #{discount.id}", merchant_bulk_discount_path(@merchant, discount) %>
-        <li>Percentage discount: <%= discount.percentage_discount %></li>
-        <li>Quantity threshold: <%= discount.quantity_threshold %></li>
+        <li>Percentage Discount: <%= discount.percentage_discount %></li>
+        <li>Quantity Threshold: <%= discount.quantity_threshold %></li>
       </ul>
     <% end %>
   </div>
