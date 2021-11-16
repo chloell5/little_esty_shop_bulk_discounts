@@ -11,13 +11,9 @@
 </div>
 
 <body>
-  <div class="row">
-    <p class='col-12'>My Invoice</p>
-  </div>
-
-<ul class='mr-auto col-10'>
-  <% @invoices.each do |invoice| %>
-    <li><%= link_to "Invoice ##{invoice.id}", merchant_invoice_path(@merchant, invoice) %></li>
-  <% end %>
-  </ul>
+  <body>
+    <div class="row">
+      <p class='mr-auto col-sm-5'>All Discounts</p>
+      <!-- <p class='ml-auto col-sm-5'>Items Ready to Ship</p> -->
+    </div>
 </body>
