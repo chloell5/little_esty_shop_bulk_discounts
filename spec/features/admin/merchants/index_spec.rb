@@ -82,7 +82,7 @@ describe 'Admin Merchant Index' do
   end
 
   it 'should have a link to create a new merchant' do
-    expect(page).to have_link('Create Merchant')
+    expect(page).to have_content('Create Merchant')
     click_link 'Create Merchant'
 
     expect(current_path).to eq(new_admin_merchant_path)
@@ -95,7 +95,7 @@ describe 'Admin Merchant Index' do
 
   it 'should display the best day for each top 5 merchant' do
     within("#top-#{@m1.id}") do
-      expect(page).to have_content("Top Selling Date for #{@m1.name} was on#{@m1.best_day.strftime("%_m/%d/%Y")}")
+      expect(page).to have_content("Top Selling Date for #{@m1.name} was on #{@m1.best_day.strftime("%_m/%d/%Y")}")
     end
   end
 end

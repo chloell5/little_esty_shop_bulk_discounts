@@ -11,7 +11,7 @@ describe 'Admin Merchant Show' do
   end
 
   it 'should have a link to update merchant' do
-    expect(page).to have_link('Update Merchant')
+    expect(page).to have_content('Update Merchant')
 
     click_link 'Update Merchant'
 

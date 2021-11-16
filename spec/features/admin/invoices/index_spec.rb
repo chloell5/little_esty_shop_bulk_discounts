@@ -15,9 +15,9 @@ describe 'Admin Invoices Index Page' do
   end
 
   it 'should list all invoice ids in the system as links to their show page' do
-    expect(page).to have_link("Invoice ##{@i1.id}")
-    expect(page).to have_link("Invoice ##{@i2.id}")
-    expect(page).to have_link("Invoice ##{@i3.id}")
-    expect(page).to have_link("Invoice ##{@i4.id}")
+    expect(page).to have_content("Invoice ##{@i1.id}")
+    expect(page).to have_content("Invoice ##{@i2.id}")
+    expect(page).to have_content("Invoice ##{@i3.id}")
+    expect(page).to have_content("Invoice ##{@i4.id}")
   end
 end
