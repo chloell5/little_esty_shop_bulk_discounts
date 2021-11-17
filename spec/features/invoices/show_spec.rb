@@ -99,5 +99,10 @@ RSpec.describe 'invoices show' do
        expect(page).to_not have_content("in progress")
      end
   end
-
+  it 'shows total revenue do'
+  it 'shows total discounted revenue do'
 end
+# As a merchant
+# When I visit my merchant invoice show page
+# Then I see the total revenue for my merchant from this invoice (not including discounts)
+# And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation
