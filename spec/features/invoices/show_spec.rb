@@ -99,5 +99,28 @@ RSpec.describe 'invoices show' do
        expect(page).to_not have_content("in progress")
      end
   end
+  it 'shows total merchant revenue' do
+    InvoiceItem.create!(invoice_id: @invoice_1.id, item_id: @item_5.id, quantity: 12, unit_price: 6, status: 1)
 
+    visit merchant_invoice_path(@merchant1, @invoice_1)
+
+    expect(page).to have_content("Total Merchant Revenue: 162.0")
+  end
+  it 'shows total discounted revenue' do
+    invoice = Invoice.create!(customer_id: @customer_6.id, status: 2)
+
+    InvoiceItem.create!(invoice_id: invoice.id, item_id: @item_1.id, quantity: 10, unit_price: 10, status: 1)
+    visit merchant_invoice_path(@merchant1, invoice)
+    InvoiceItem.create!(invoice_id: invoice.id, item_id: @item_2.id, quantity: 20, unit_price: 20, status: 1)
+    visit merchant_invoice_path(@merchant1, invoice)
+    InvoiceItem.create!(invoice_id: invoice.id, item_id: @item_3.id, quantity: 1, unit_price: 100, status: 1)
+    visit merchant_invoice_path(@merchant1, invoice)
+
+    BulkDiscount.create!(percentage_discount: 20, quantity_threshold: 10, merchant_id: @merchant1.id)
+    BulkDiscount.create!(percentage_discount: 50, quantity_threshold: 20, merchant_id: @merchant1.id)
+
+    visit merchant_invoice_path(@merchant1, invoice)
+#80 + 200 + 100
+    expect(page).to have_content("Discounted Merchant Revenue: 380.0")
+  end
 end

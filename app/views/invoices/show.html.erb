@@ -2,9 +2,10 @@
   <nav class="navbar navbar-expand-lg">
     <p class="navbar-text"><%= @merchant.name %></p>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Dashboard', merchant_dashboard_index_path, style: 'pull-right' %>
-      <%= link_to 'My Items', merchant_items_path(@merchant), style: 'pull-right' %>
-      <%= link_to 'My Invoices', merchant_invoices_path(@merchant), style: 'pull-right' %></li>
+      <li><%= link_to 'Dashboard', merchant_dashboard_index_path, class: 'link_1', style: 'pull-right' %>
+      <li><%= link_to 'Items', merchant_items_path, class: 'link_1', style: 'pull-right' %>
+      <li><%= link_to 'Invoices', merchant_invoices_path, class: 'link_1', style: 'pull-right' %>
+      <li><%= link_to 'Discounts', merchant_bulk_discounts_path(@merchant), class: 'link_1', style: 'pull-right' %>
     </ul>
   </nav>
 </div>
@@ -20,7 +21,8 @@
   <br>
 
   <p> Created on: <%= @invoice.created_at.strftime("%A, %B %-d, %Y") %></p>
-  <p>Total Revenue: <%= @invoice.total_revenue %></p>
+  <p>Total Merchant Revenue: <%= @invoice.merchant_total_revenue(@merchant) %></p>
+  <p>Discounted Merchant Revenue: <%= @invoice.merchant_discounted_revenue(@merchant) %></p>
 
 
   <h4>Customer:</h4>
@@ -48,7 +50,7 @@
             <td style="text-align:center"><%= form_with model: @invoice, url: merchant_invoice_path(@merchant, @invoice), method: :patch, local: true do |f| %>
                                             <%= f.select :status, Invoice.statuses.keys, selected: "#{@invoice.status}" %>
                                             <%= f.submit 'Update Invoice' %>
-                                          <% end %></td><br/>
+                                          <% end %></td>
           </tr>
         </section>
       <% end %>

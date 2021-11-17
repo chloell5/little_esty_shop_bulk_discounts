@@ -2,9 +2,9 @@
   <nav class="navbar navbar-expand-lg">
     <p class="navbar-text">Admin Dashboard</p>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'Dashboard', admin_dashboard_index_path, style: 'pull-right' %>
-      <%= link_to 'Merchants', admin_merchants_path, style: 'pull-right' %>
-      <%= link_to 'Invoices', admin_invoices_path, style: 'pull-right' %></li>
+      <li><%= link_to 'Dashboard', admin_dashboard_index_path, class: 'link_1', style: 'pull-right' %><br>
+      <%= link_to 'Merchants', admin_merchants_path,class: 'link_1', style: 'pull-right' %><br>
+      <%= link_to 'Invoices', admin_invoices_path,class: 'link_1', style: 'pull-right' %></li>
     </ul>
   </nav>
 </div>
@@ -13,17 +13,16 @@
   <div class="row">
     <p class='ml-auto col-sm-5'>Top 5 Customers</p>
     <p class='mr-auto col-sm-5'>Incomplete Invoices</p>
-      <ul class='ml-auto col-sm-4'>
+      <ul class='ml-auto col'>
         <% @customers.each do |c| %>
-          <li><%= c.first_name + ' ' + c.last_name %> - 
+          <li><%= c.first_name + ' ' + c.last_name %> -
           <%= c.number_of_transactions %> Purchases
         <% end %>
       </ul>
-      <ul class='mr-auto col-sm-4'>
+      <ul class='mr-auto col'>
         <% @invoices.each do |i| %>
           <li><%= link_to "Invoice # #{i.id}", admin_invoice_path(i.id) %></a> - <%= i.created_at.strftime("%A, %B %d, %Y") %>
         <% end %>
       </ul>
   </div>
 </body>
-    
