@@ -1,5 +1,7 @@
 {
   "name": "little-etsy-shop",
   "private": true,
-  "dependencies": {}
+  "devDependencies": {
+    "webpack": "^5.64.1"
+  }
 }
