@@ -25,4 +25,12 @@ describe "bulk discounts show page" do
     expect(page).to_not have_content("Percentage Discount: #{@bd3.percentage_discount}")
     expect(page).to_not have_content("Quantity Threshold: #{@bd3.quantity_threshold}")
   end
+
+  it 'for each discount id it is a link to the discount show page' do
+    visit merchant_bulk_discount_path(@merchant1, @bd1)
+
+    click_button "Edit Discount"
+
+    expect(page).to have_current_path("/merchant/#{@merchant1.id}/bulk_discounts/#{@bd1.id}/edit")
+  end
 end
