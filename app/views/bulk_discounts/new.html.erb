@@ -1,0 +1,23 @@
+<body>
+  <div class="row">
+    <p class='mr-auto col-12'>New Discount</p>
+  </div>
+
+
+  <table>
+    <%= form_with model: [@merchant, @discount], method: :post, local: true do |f|  %>
+    <tr>
+      <td><%= f.label :percentage_discount %></td>
+      <td><%= f.number_field :percentage_discount %><br><br></td>
+    </tr>
+    <tr>
+      <td><%= f.label :quantity_threshold %></td>
+      <td><%= f.number_field :quantity_threshold %><br><br></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit "Submit" %></td>
+    </tr>
+    <% end %>
+  </table>
+</body>
