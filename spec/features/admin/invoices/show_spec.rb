@@ -69,4 +69,12 @@ describe 'Admin Invoices Index Page' do
       expect(@i1.status).to eq('complete')
     end
   end
+
+  it 'should display the total revenue the invoice will generate' do
+    BulkDiscount.create!(percentage_discount: 20, quantity_threshold: 8, merchant_id: @m1.id)
+
+    visit admin_invoice_path(@i1)
+    
+    expect(page).to have_content("Discounted Revenue: $#{@i1.total_discounted_revenue.round(2)}")
+  end
 end

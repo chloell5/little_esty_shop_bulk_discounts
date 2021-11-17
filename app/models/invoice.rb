@@ -11,6 +11,29 @@ class Invoice < ApplicationRecord
   enum status: [:cancelled, 'in progress', :complete]
 
   def total_revenue
-    invoice_items.sum("unit_price * quantity")
+    invoice_items.sum('unit_price * quantity')
+  end
+
+  def merchant_items(merchant)
+    invoice_items.joins(:item)
+                 .where('items.merchant_id = ?', merchant.id)
+  end
+
+  def merchant_total_revenue(merchant)
+    invoice_items.joins(:item)
+                 .where('items.merchant_id =?', merchant)
+                 .sum('quantity * invoice_items.unit_price')
+  end
+
+  def merchant_discounted_revenue(merchant)
+    merchant_items(merchant).sum do |items|
+      items.discount_unit_price
+    end
+  end
+
+  def total_discounted_revenue
+    invoice_items.sum do |item|
+      item.discount_unit_price
+    end
   end
 end
