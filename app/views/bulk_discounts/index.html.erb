@@ -12,7 +12,10 @@
 
 <body>
   <div class="row">
-    <p class='mr-auto col-12'>All Discounts</p>
+    <h4 class='mr-auto col-13'>Upcoming Holidays</h4>
+  </div>
+  <div class="row">
+    <h2 class='mr-auto col-12'>All Discounts</h2>
   </div>
   <div class="row">
     <p class='mr-auto col-10'>
@@ -21,8 +24,10 @@
   <div class='mr-auto col-11'>
     <% @merchant.bulk_discounts.each do |discount| %>
       <ul><%= link_to "Discount No #{discount.id}", merchant_bulk_discount_path(@merchant, discount) %>
-        <li>Percentage Discount: <%= discount.percentage_discount %></li>
-        <li>Quantity Threshold: <%= discount.quantity_threshold %></li>
+        <li>Percentage Discount:
+          <%= discount.percentage_discount %></li>
+        <li>Quantity Threshold:
+          <%= discount.quantity_threshold %></li>
         <li><%= button_to "Delete Discount No #{discount.id}", merchant_bulk_discount_path(@merchant, discount), method: :delete %></li>
       </ul>
     <% end %>
