@@ -3,9 +3,9 @@ Bulk Discounts
 
 Table of Contents
 ---
-* [Overview]
-* [Technology]
-* [Creators]
+* [Overview](#overview)
+* [Technology](#technologies)
+* [Creators](#creators)
 
 Overview
 ---
