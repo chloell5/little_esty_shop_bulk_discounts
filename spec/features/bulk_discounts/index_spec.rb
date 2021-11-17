@@ -52,4 +52,13 @@ describe "bulk discounts index" do
     expect(page).to_not have_content("Percentage Discount: #{@bd2.percentage_discount}")
     expect(page).to_not have_content("Quantity Threshold: #{@bd2.quantity_threshold}")
   end
+
+  it 'has next three holidays' do
+    visit merchant_bulk_discounts_path(@merchant1)
+    
+    expect(page.status_code).to eq 200
+    expect(page).to have_content("Thanksgiving")
+    expect(page).to have_content("Christmas Day")
+    expect(page).to have_content("New Year's Day")
+  end
 end
