@@ -14,6 +14,10 @@
   <div class="row">
     <p class='mr-auto col-12'>All Discounts</p>
   </div>
+  <div class="row">
+    <p class='mr-auto col-10'>
+      <%= link_to "Create New Discount", new_merchant_bulk_discount_path(@merchant), method: :get %></p>
+  </div>
   <div class='mr-auto col-10'>
     <% @merchant.bulk_discounts.each do |discount| %>
       <ul><%= link_to "Discount No #{discount.id}", merchant_bulk_discount_path(@merchant, discount) %>

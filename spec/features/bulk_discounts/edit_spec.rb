@@ -29,6 +29,6 @@ describe 'bulk discounts edit page' do
     click_on('Update')
 
     expect(page).to have_content('Error')
-    expect(page).to have_current_path(edit_merchant_bulk_discount_path(@merchant1, @bd1))
+    expect(page).to have_current_path("/merchant/#{@merchant1.id}/bulk_discounts/#{@bd1.id}/edit")
   end
 end
