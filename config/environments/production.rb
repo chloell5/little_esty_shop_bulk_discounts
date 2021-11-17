@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.assets.precompile[0] =  Proc.new { |path| !File.extname(path).in?(['.js', '.css', '.map']) }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
